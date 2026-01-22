@@ -13,11 +13,12 @@ import Menu from './components/Menu.jsx';
 import NotFound  from './components/NotFound.jsx';
 import Employees from './components/Employees.jsx';
 import EmployeeProfile from './components/EmployeeProfile.jsx';
+import EmployeeUpdate from './components/EmployeeUpdate.jsx';
 
 const router = createBrowserRouter([
-  { path: '/', element:  <Home />, children: [{ path: 'employees', element: <Employees /> },
-    { path: '/employees/:id', element: <EmployeeProfile /> }
-    
+  { path: '/', element:  <Home />, children: [{ path: 'employees', element: <Employees />},
+    { path: '/employees/:id', element: <EmployeeProfile />},
+    { path: 'update/:id', element: <EmployeeUpdate /> }
   ] },
   
   
