@@ -10,26 +10,30 @@ import './assets/css/theme.min.css';
 
 import Home from './components/Home.jsx';
 import Menu from './components/Menu.jsx';
-import NotFound  from './components/NotFound.jsx';
+import NotFound from './components/NotFound.jsx';
 import Employees from './components/Employees.jsx';
 import EmployeeProfile from './components/EmployeeProfile.jsx';
 import EmployeeUpdate from './components/EmployeeUpdate.jsx';
-
+import AddEmployee from './components/AddEmployee.jsx';
+import Department from './components/Department/Department.jsx';
 const router = createBrowserRouter([
-  { path: '/', element:  <Home />, children: [{ path: 'employees', element: <Employees />},
-    { path: '/employees/:id', element: <EmployeeProfile />},
-    { path: 'update/:id', element: <EmployeeUpdate /> }
-  ] },
-  
-  
+  {
+    path: '/', element: <Home />, children: [{ path: 'employees', element: <Employees /> },
+    { path: '/employees/:id', element: <EmployeeProfile /> },
+    { path: 'update/:id', element: <EmployeeUpdate /> },
+    { path: '/addemployee', element: <AddEmployee /> },
+      // { path: '/removeemployee/:id', element: <RemoveEmployee /> }
+    ]
+  },
+
+
   // { path: '/employees', element: <Employees /> },
- {
-    path: '/menu',
-    element: <Home />,
+  {
+    path: '/departments', element: <Home />,
     children: [
       {
-        path: 'demo',
-        element: <div>Demo Page</div>
+        path: '',
+        element: <Department />
       }
     ]
   }
