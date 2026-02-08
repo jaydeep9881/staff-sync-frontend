@@ -97,9 +97,7 @@ function Menu() {
               <ul className="nxl-submenu">
                 <li className="nxl-item">
                   <Link to="/departments" className="nxl-link">
-
                     Detail
-
                   </Link>
                 </li>
                 <li className="nxl-item">
