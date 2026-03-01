@@ -77,40 +77,19 @@ function Menu() {
                     Add Employee
                   </Link>
                 </li>
-                <li className="nxl-item">
-                  <a className="nxl-link" href="customers-create.html">
-                    update Employee
-                  </a>
-                </li>
+                 
               </ul>
             </li>
             <li className="nxl-item nxl-hasmenu">
-              <a href="javascript:void(0);" className="nxl-link">
-                <span className="nxl-micon">
+               <Link to="/departments" className="nxl-link">
+               <span className="nxl-micon">
                   <i className="feather-briefcase" />
                 </span>
-                <span className="nxl-mtext">Departments</span>
-                <span className="nxl-arrow">
-                  <i className="feather-chevron-right" />
-                </span>
-              </a>
-              <ul className="nxl-submenu">
-                <li className="nxl-item">
-                  <Link to="/departments" className="nxl-link">
-                    Detail
+                 <span className="nxl-mtext">Departments</span>
+                 
                   </Link>
-                </li>
-                <li className="nxl-item">
-                  <a className="nxl-link" href="customers-view.html">
-                    Add Department
-                  </a>
-                </li>
-                <li className="nxl-item">
-                  <a className="nxl-link" href="customers-create.html">
-                    Update Department
-                  </a>
-                </li>
-              </ul>
+               
+              
             </li>
           </ul>
 
