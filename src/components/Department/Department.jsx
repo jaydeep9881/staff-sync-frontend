@@ -23,7 +23,6 @@ function Department() {
   };
 
   const updateDepartment = (id) => {
-    //logic to update department
     axios
       .put(`http://localhost:8080/department/${id}`, { name: departments })
       .then((response) => {
@@ -34,7 +33,6 @@ function Department() {
       });
   };
   const deleteDepartment = (id) => {
-    //logic to delete department
     if (confirm("Are you sure you want to delete this department?")) {
       axios
         .delete(`http://localhost:8080/department/${id}`)
@@ -48,17 +46,17 @@ function Department() {
       alert("Department deletion cancelled");
     }
   };
-  const handleAdd =() =>{
-    axios.post(`http://localhost:8080/department`,{name:departments})
-    .then((res)=>{
-        setShow(false)
-        setDepartments("")
-        setDept((prev)=>{
-           return [...prev, res.data]
-           
-        })
-    })
-  }
+  const handleAdd = () => {
+    axios
+      .post(`http://localhost:8080/department`, { name: departments })
+      .then((res) => {
+        setShow(false);
+        setDepartments("");
+        setDept((prev) => {
+          return [...prev, res.data];
+        });
+      });
+  };
   return (
     <>
       <div className="page-header d-flex  fixed-header ">
@@ -115,27 +113,25 @@ function Department() {
               </div>
               <div className="card-body custom-card-action p-0">
                 <div className="table-responsive">
-                  <table className="table table-hover mb-0">
+                  <table className="table   mb-0">
                     <thead>
                       <tr className="border-b">
                         <th scope="row">Name</th>
-
                         <th className="text-end">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                       { show && <tr>
+                      {show && (
+                        <tr className="border-b" style={{ background: "transparent" }}>
                           <td>
                             <div className="d-flex align-items-center gap-3">
                               <input
                                 type="text"
                                 onChange={(e) => handleChange(e)}
                               />
-
                               <span className="fs-12 d-block fw-normal text-muted"></span>
                             </div>
                           </td>
-
                           <td>
                             <div className="d-flex gap-2 justify-content-end">
                               <button
@@ -144,14 +140,16 @@ function Department() {
                               >
                                 save
                               </button>
-
-                              
                             </div>
                           </td>
                         </tr>
-}
+                      )}
                       {dept.map((dept) => (
-                        <tr>
+                        <tr
+                          key={dept.id}
+                          className="border-b"
+                          style={{ background: "transparent" }}
+                        >
                           <td>
                             <div className="d-flex align-items-center gap-3">
                               <input
@@ -159,11 +157,9 @@ function Department() {
                                 defaultValue={dept.name}
                                 onChange={(e) => handleChange(e)}
                               />
-
                               <span className="fs-12 d-block fw-normal text-muted"></span>
                             </div>
                           </td>
-
                           <td>
                             <div className="d-flex gap-2 justify-content-end">
                               <button
@@ -172,7 +168,6 @@ function Department() {
                               >
                                 Update
                               </button>
-
                               <button
                                 onClick={() => deleteDepartment(dept.id)}
                                 className="btn btn-danger"

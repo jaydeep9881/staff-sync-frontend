@@ -1,7 +1,10 @@
 // UserDashbord.jsx
 import React from 'react';
-
+import { useAuth } from "../../context/AuthContext.jsx";
 const UserDashbord = () => {
+  const { user } = useAuth();
+
+  
   return (
     <div className="user-dashboard" style={{ padding: '2rem' }}>
       <h2>User Dashboard</h2>

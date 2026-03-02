@@ -21,6 +21,8 @@ import { AuthProvider } from "./context/AuthContext.jsx"; // ← ADD THIS
 import AdminDashbord from "./components/admin/AdminDashbord.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import { useAuth } from "./context/AuthContext.jsx"; // ← ADD THIS
+
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
   { path: "/unauthorized", element: <Unauthorized /> },
@@ -67,9 +69,9 @@ const router = createBrowserRouter([
 
   {
     path: "/admin/",
-    element: <Home />,
+    element: <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}><Home /></ProtectedRoute>,
     children: [{ path: "dashboard", element: <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
-            <h1>Admin Dashboard</h1>
+            <h1>Admin Dashboard </h1>
           </ProtectedRoute> }],
   },
 ]);
