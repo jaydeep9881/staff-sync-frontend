@@ -39,12 +39,12 @@ function EmployeeUpdate() {
   const params = useParams();
   const [departments, setDepartments] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:8080/department')
+    axios.get('/department')
       .then((response) => { setDepartments(response.data); })
       .catch((error) => { console.log(error); });
   }, []);
   useEffect(() => {
-    axios.get(`http://localhost:8080/employee/${params.id}`)
+    axios.get(`/employee/${params.id}`)
       .then((response) => {
         setUpdateData(response.data)
       }).catch((error) => {
@@ -53,7 +53,7 @@ function EmployeeUpdate() {
   }, [params.id])
 
   const handleSubmit = (e) => {
-    axios.put(`http://localhost:8080/update_employee/${params.id}`, updateData)
+    axios.put(`/update_employee/${params.id}`, updateData)
       .then((response) => alert("Employee updated"))
       .catch((error) => console.log(error));
   };

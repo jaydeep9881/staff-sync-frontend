@@ -9,7 +9,7 @@ function Department() {
   const [dept, setDept] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/department")
+      .get("/department")
       .then((response) => {
         setDept(response.data);
       })
@@ -24,7 +24,7 @@ function Department() {
 
   const updateDepartment = (id) => {
     axios
-      .put(`http://localhost:8080/department/${id}`, { name: departments })
+      .put(`/department/${id}`, { name: departments })
       .then((response) => {
         setDepartments("");
       })
@@ -35,7 +35,7 @@ function Department() {
   const deleteDepartment = (id) => {
     if (confirm("Are you sure you want to delete this department?")) {
       axios
-        .delete(`http://localhost:8080/department/${id}`)
+        .delete(`/department/${id}`)
         .then((response) => {
           setDept((prev) => prev.filter((d) => d.id !== id));
         })
@@ -48,7 +48,7 @@ function Department() {
   };
   const handleAdd = () => {
     axios
-      .post(`http://localhost:8080/department`, { name: departments })
+      .post(`/department`, { name: departments })
       .then((res) => {
         setShow(false);
         setDepartments("");

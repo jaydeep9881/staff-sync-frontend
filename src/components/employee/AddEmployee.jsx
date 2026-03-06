@@ -35,7 +35,7 @@ function AddEmployee() {
 
     const [departments, setDepartments] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/department')
+        axios.get('/department')
             .then((response) => { setDepartments(response.data); })
             .catch((error) => { console.log(error); });
     }, []);
@@ -44,7 +44,7 @@ function AddEmployee() {
         e.preventDefault();
 
         console.log("Sending data:", updateData);
-        axios.post('http://localhost:8080/employees', updateData)
+        axios.post('/employees', updateData)
             .then((response) => {
                 // ✅ Check HTTP status or returned data
                 if (response.status === 201 || response.status === 200) {

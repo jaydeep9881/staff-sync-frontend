@@ -1,5 +1,5 @@
 import axios from "axios";
-
+axios.defaults.baseURL = "http://localhost:8080";
 // Automatically attach token to every request
 axios.interceptors.request.use(
   (config) => {

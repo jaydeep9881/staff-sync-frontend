@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Employees() {
   const [employees, setEmployees] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8080/employees").
+    axios.get("/employees").
       then((response) => {
         setEmployees(response.data);
       }).catch((error) => {

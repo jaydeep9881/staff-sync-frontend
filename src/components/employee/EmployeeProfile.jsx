@@ -6,7 +6,7 @@ function EmployeeProfile() {
   const params = useParams();
   const [emp, setEmp] = useState(null);
   useEffect(() => {
-    axios.get(`http://localhost:8080/employee/${params.id}`)
+    axios.get(`/employee/${params.id}`)
       .then((response) => {
         setEmp(response.data)
       }).catch((error) => {
@@ -15,7 +15,7 @@ function EmployeeProfile() {
   }, [params.id])
   const removeEmployee = () => {
     confirm("Are you sure you want to delete this employee?");
-    axios.delete(`http://localhost:8080/delete_employee/${params.id}`)
+    axios.delete(`/delete_employee/${params.id}`)
       .then((response) => {
         alert("Employee deleted successfully");
         window.location.href = "/employees";
@@ -53,7 +53,7 @@ function EmployeeProfile() {
                   <div className="wd-150 ht-150 mx-auto mb-3 position-relative">
                     <div className="avatar-image wd-150 ht-150 border border-5 border-gray-3">
                       <img
-                        src="assets/images/avatar/1.png"
+                        src="/src/assets/images/avatar/image.png"
                         alt=""
                         className="img-fluid"
                       />

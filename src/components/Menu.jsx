@@ -19,7 +19,7 @@ function Menu() {
     if (!user?.employeeId) return; // ← ADD THIS CHECK
 
     axios
-      .get(`http://localhost:8080/employee/${user.employeeId}`) // ← fixed URL
+      .get(`/employee/${user.employeeId}`) // ← fixed URL
       .then((response) => {
         setEmp(response.data);
       })
@@ -109,6 +109,16 @@ function Menu() {
                   <span className="nxl-mtext">Departments</span>
                 </Link>
               </li>
+              {user?.role === "ROLE_ADMIN" && (
+              <li className="nxl-item nxl-hasmenu">
+                <Link to="/users" className="nxl-link">
+                  <span className="nxl-micon">
+                    <i className="feather-briefcase" />
+                  </span>
+                  <span className="nxl-mtext">Users</span>
+                </Link>
+              </li>
+              )}
             </ul>
           </div>
         </div>

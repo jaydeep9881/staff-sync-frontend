@@ -22,7 +22,7 @@ import AdminDashbord from "./components/admin/AdminDashbord.jsx";
 import Unauthorized from "./components/Unauthorized.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import { useAuth } from "./context/AuthContext.jsx"; // ← ADD THIS
-
+import UsersList from "./components/user/UsersList.jsx";
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
   { path: "/unauthorized", element: <Unauthorized /> },
@@ -55,6 +55,12 @@ const router = createBrowserRouter([
       { path: "/addemployee", element: <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
            <AddEmployee />
           </ProtectedRoute> },
+          {
+            path:"/users",
+            element:<ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+           <UsersList />
+          </ProtectedRoute>
+          }
     ],
   },
   {
