@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import { useAuth } from "../../context/AuthContext.jsx";
 function EmployeeProfile() {
   const params = useParams();
   const [emp, setEmp] = useState(null);
+  const { user } = useAuth();
   useEffect(() => {
     axios.get(`/employee/${params.id}`)
       .then((response) => {
@@ -121,18 +122,22 @@ function EmployeeProfile() {
                     </a>
                   </li>
                 </ul>
+                 {user?.role === "ROLE_ADMIN" && (
                 <div className="d-flex gap-2 text-center pt-4">
 
                   <button onClick={removeEmployee} className="w-50 btn btn-light-brand">
                     <i className="feather-trash-2 me-2" />
                     <span>Delete</span>
                   </button>
-                  <Link to={`/update/${emp.id}`} className="w-50 btn btn-primary">
-                    <i className="feather-edit me-2" />
-                    <span>Edit Profile</span>
-                  </Link>
-
+                 
+                    <Link to={`/update/${emp.id}`} className="w-50 btn btn-primary">
+                      <i className="feather-edit me-2" />
+                      <span>Edit Profile</span>
+                    </Link>
+                  
                 </div>
+                )}
+
               </div>
             </div>
 

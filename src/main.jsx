@@ -7,6 +7,7 @@ import "./assets/css/bootstrap.min.css";
 import "./assets/vendors/css/vendors.min.css";
 import "./assets/vendors/css/daterangepicker.min.css";
 import "./assets/css/theme.min.css";
+import "./index.css";
 
 import Home from "./components/Home.jsx";
 import Menu from "./components/Menu.jsx";
@@ -23,6 +24,7 @@ import Unauthorized from "./components/Unauthorized.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import { useAuth } from "./context/AuthContext.jsx"; // ← ADD THIS
 import UsersList from "./components/user/UsersList.jsx";
+// import AdminDashbord from "./components/admin/AdminDashbord.jsx";
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
   { path: "/unauthorized", element: <Unauthorized /> },
@@ -43,9 +45,9 @@ const router = createBrowserRouter([
       {
         path: "/employees/:id",
         element: (
-          <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
+          
             <EmployeeProfile />
-          </ProtectedRoute>
+          
         ),
       },
       { path: "update/:id", element:
@@ -77,7 +79,7 @@ const router = createBrowserRouter([
     path: "/admin/",
     element: <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}><Home /></ProtectedRoute>,
     children: [{ path: "dashboard", element: <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
-            <h1>Admin Dashboard </h1>
+           <AdminDashbord />
           </ProtectedRoute> }],
   },
 ]);

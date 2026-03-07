@@ -9,7 +9,7 @@ function Home(){
     <Menu/>
     <main className="nxl-container">
         <div className="nxl-content">
-            <h1>Welcome {user?.username || "Guest"}!</h1>
+             
           <Outlet />
         </div>
     </main>

@@ -16,10 +16,10 @@ function Menu() {
 
   useEffect(() => {
     // Only fetch if employeeId exists
-    if (!user?.employeeId) return; // ← ADD THIS CHECK
+    if (!user?.employeeId) return; //  
 
     axios
-      .get(`/employee/${user.employeeId}`) // ← fixed URL
+      .get(`/employee/${user.employeeId}`)  
       .then((response) => {
         setEmp(response.data);
       })
@@ -56,16 +56,16 @@ function Menu() {
                 <label>Navigation</label>
               </li>
               <li className="nxl-item nxl-hasmenu">
-                <a href="javascript:void(0);" className="nxl-link">
-                  <span className="nxl-micon">
-                    <i className="feather-airplay" />
-                  </span>
-                  <span className="nxl-mtext">Dashboards</span>
-                  <span className="nxl-arrow">
+                
+                 
+                  <Link to="/admin/dashboard" className="nxl-link">
+                   <span className="nxl-mtext">Dashboards</span>
+                  </Link>
+                  {/* <span className="nxl-arrow">
                     <i className="feather-chevron-right" />
-                  </span>
-                </a>
-                <ul className="nxl-submenu">
+                  </span> */}
+               
+                {/* <ul className="nxl-submenu">
                   <li className="nxl-item">
                     <a className="nxl-link" href="index.html">
                       CRM
@@ -76,7 +76,7 @@ function Menu() {
                       Analytics
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </li>
               <li className="nxl-item nxl-hasmenu">
                 <a href="javascript:void(0);" className="nxl-link">
@@ -3565,7 +3565,10 @@ function Menu() {
 
                   <a href="javascript:void(0);" className="dropdown-item">
                     <i className="feather-user" />
+                    <Link to={`/employees/${user?.employeeId}`} style={{color:'inherit',textDecoration:'none'}}>
                     <span>Profile Details</span>
+                    </Link>
+                    
                   </a>
                   {/* <a href="javascript:void(0);" className="dropdown-item">
                   <i className="feather-activity" />
